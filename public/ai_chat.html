@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIK - AI Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="page-layout">
+        <div class="sidebar">
+            <h3 class="sidebar-title">SIK Navigation</h3>
+            <a href="dashboard.html" class="sidebar-link">Dashboard</a>
+            <a href="ai_chat.html" class="sidebar-link active">AI Chat</a>
+            <a href="image_gen.html" class="sidebar-link">Image Generation</a>
+            <hr class="sidebar-divider">
+
+            <button id="newChatBtn" class="btn secondary-btn" style="width: 100%;">New Chat</button>
+
+            <hr class="sidebar-divider">
+            <h4 class="sidebar-title">Your Sessions</h4>
+            <div id="chatSessionsList" class="chat-sessions-list">
+                <!-- Chat session links with delete icons will be dynamically added here -->
+                <p style="font-size: 0.85rem; color: #888; text-align: center;">Loading sessions...</p>
+            </div>
+            <hr class="sidebar-divider">
+            <div class="sidebar-footer">
+                <p id="loggedInUsername-wrapper">Logged in as: <span id="loggedInUsername"></span></p>
+                <button id="logoutBtn" class="btn danger-btn">Logout</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2 class="sub-heading">Chat with AI</h2>
+            <div id="chatMessages" class="chat-messages">
+                <!-- Chat messages will be dynamically added here by JavaScript -->
+            </div>
+            <form id="chatForm" class="chat-input-wrapper">
+                <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..." required>
+                <button type="submit" class="send-button"><i class="fas fa-paper-plane"></i> Send</button>
+            </form>
+            <div id="loadingSpinner" class="spinner"></div>
+        </div>
+    </div>
+    <!-- Message box for alerts -->
+    <div id="messageBox"></div>
+
+    <script src="js/chat.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

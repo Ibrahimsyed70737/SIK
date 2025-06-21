@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIK - Image Generation</title> <!-- Updated title -->
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons (e.g., paper-plane, trash-alt, download) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body> <!-- Initial theme will be set by JavaScript -->
+    <div class="page-layout">
+        <!-- Sidebar Navigation (Common to AI Chat and Image Gen) -->
+        <div class="sidebar">
+            <h3 class="sidebar-title">SIK Navigation</h3>
+            <a href="dashboard.html" class="sidebar-link">Dashboard</a>
+            <a href="ai_chat.html" class="sidebar-link">AI Chat</a>
+            <a href="image_gen.html" class="sidebar-link active">Image Generation</a> <!-- Set active for this page -->
+            <hr class="sidebar-divider">
+            <!-- Image generation specific sidebar content can be added here if needed -->
+            <!-- Sidebar Footer for Username and Logout Button -->
+            <div class="sidebar-footer">
+                <p id="loggedInUsername-wrapper">Logged in as: <span id="loggedInUsername"></span></p>
+                <button id="logoutBtn" class="btn danger-btn">Logout</button>
+            </div>
+        </div>
+
+        <!-- Main Content Area for Image Generation -->
+        <main class="main-content">
+            <h2 class="sub-heading">AI Image Generator</h2>
+            <p class="description">Generate stunning images from text prompts using advanced AI models.</p>
+
+            <form id="imageGenForm" class="form">
+                <div class="form-group prompt-input-wrapper">
+                    <label for="prompt">Prompt</label>
+                    <textarea id="prompt" class="prompt-input" rows="4" placeholder="e.g., A majestic lion roaring in a savannah, golden hour, realistic, high detail"></textarea>
+                    <button type="button" id="randomPromptBtn" class="random-prompt-button" title="Generate Random Prompt">
+                        <!-- Heroicons 'Sparkles' for random prompt, or similar from Font Awesome -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9.123 8.16l6.23-6.23a1.5 1.5 0 012.119 2.119l-6.23 6.23z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.07 18.07a6 6 0 01-8.5-8.5m.706.707a5 5 0 007.07-7.07m-4.242 4.242a4 4 0 015.656-5.656m-2.828 2.828a3 3 0 004.242-4.242M8.7 12.3l6.23 6.23a1.5 1.5 0 002.119 2.119l-6.23-6.23z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="form-options">
+                    <div class="form-group">
+                        <label for="imageCount">Number of Images</label>
+                        <input type="number" id="imageCount" value="1" min="1" max="4">
+                    </div>
+                    <div class="form-group">
+                        <label for="aspectRatio">Aspect Ratio</label>
+                        <select id="aspectRatio" class="select-input">
+                            <option value="1:1" selected>1:1 (Square)</option>
+                            <option value="16:9">16:9 (Landscape)</option>
+                            <option value="9:16">9:16 (Portrait)</option>
+                            <option value="4:3">4:3 (Traditional)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" id="generateButton" class="generate-button">
+                    <span class="spinner" id="genSpinner"></span>
+                    <span class="button-text">Generate Image</span>
+                </button>
+                <p id="errorMessage" class="error-message"></p>
+            </form>
+
+            <hr class="my-6 border-gray-200 dark:border-gray-700"> <!-- Visual separator -->
+
+            <!-- Image Gallery Section -->
+            <section id="imageGallerySection" class="image-gallery-section">
+                <h2 class="sub-heading">Your Generated Images History</h2>
+                <div class="form-group">
+                    <label for="promptHistoryDropdown">View by Prompt:</label>
+                    <select id="promptHistoryDropdown" class="select-input">
+                        <option value="">-- Select a Prompt --</option>
+                    </select>
+                </div>
+                <div id="imageGrid" class="image-grid">
+                    <!-- Generated images will be dynamically loaded here by JavaScript -->
+                    <p id="noImagesMessage">No images generated yet. Start creating!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Custom Modal Structure (Used for all general alerts and messages) -->
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 id="modalTitle"></h3>
+            <p id="modalMessage"></p>
+            <div class="modal-actions">
+                <button id="modalOkButton" class="modal-ok-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <!-- Assuming utils.js contains showCustomModal and other shared functions -->
+    <script src="js/image_gen.js"></script>
+</body>
+</html>
