@@ -108,21 +108,14 @@ PORT=5000
    npm install
    ```
 
-3. **Install Frontend Dependencies** (if applicable)
+3. **Run the App**
    ```bash
-   cd ../client
-   # Normally no dependencies unless using a bundler like Vite
+   npm run dev
    ```
 
-4. **Run the App**
-   ```bash
-   # In server/
-   npm start
+4. **Open in Browser**
    ```
-
-5. **Open in Browser**
-   ```
-   http://localhost:5000/
+   http://localhost:3000/
    ```
 
 ---
